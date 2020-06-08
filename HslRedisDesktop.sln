@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HslRedisDesktop", "HslRedisDesktop\HslRedisDesktop.csproj", "{F399B6F5-B65C-4CEE-AE46-830B5429B0FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F399B6F5-B65C-4CEE-AE46-830B5429B0FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F399B6F5-B65C-4CEE-AE46-830B5429B0FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F399B6F5-B65C-4CEE-AE46-830B5429B0FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F399B6F5-B65C-4CEE-AE46-830B5429B0FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF4FFBEA-4C19-4A9A-BED6-BC3DC31247A8}
+	EndGlobalSection
+EndGlobal
