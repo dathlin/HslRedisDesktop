@@ -31,7 +31,9 @@ namespace HslRedisDesktop
 			}
 		}
 
-		private void FormMain_Load( object sender, EventArgs e )
+        #region 窗体 Load Show Close
+
+        private void FormMain_Load( object sender, EventArgs e )
 		{
 			ImageList imageList = new ImageList( );
 			imageList.Images.Add( "loading", Properties.Resources.loading );
@@ -74,24 +76,9 @@ namespace HslRedisDesktop
 			// 关于
 			aboutToolStripMenuItem.Click += AboutToolStripMenuItem_Click;
 			sourceCodeToolStripMenuItem.Click += SourceCodeToolStripMenuItem_Click;
+            contactToolStripMenuItem.Click += ContactToolStripMenuItem_Click;
 		}
 
-		private void SourceCodeToolStripMenuItem_Click( object sender, EventArgs e )
-		{
-			try
-			{
-				System.Diagnostics.Process.Start( "https://github.com/dathlin/HslRedisDesktop" );
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show( ex.Message );
-			}
-		}
-
-		private void AboutToolStripMenuItem_Click( object sender, EventArgs e )
-		{
-			CreateRedisShowTagControl<StartControl>( );
-		}
 
 		private void FormMain_Shown( object sender, EventArgs e )
 		{
@@ -116,6 +103,34 @@ namespace HslRedisDesktop
 				}
 			}
 		}
+
+		#endregion
+
+		#region 顶部菜单
+
+		private void ContactToolStripMenuItem_Click( object sender, EventArgs e )
+		{
+			CreateRedisShowTagControl<ContactControl>( );
+		}
+
+		private void SourceCodeToolStripMenuItem_Click( object sender, EventArgs e )
+		{
+			try
+			{
+				System.Diagnostics.Process.Start( "https://github.com/dathlin/HslRedisDesktop" );
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show( ex.Message );
+			}
+		}
+
+		private void AboutToolStripMenuItem_Click( object sender, EventArgs e )
+		{
+			CreateRedisShowTagControl<StartControl>( );
+		}
+
+		#endregion
 
 		#region Redis 右键菜单
 

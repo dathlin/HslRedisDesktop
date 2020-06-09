@@ -109,6 +109,7 @@
     <Compile Include="ListKey\ListValueEditForm.Designer.cs">
       <DependentUpon>ListValueEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NamespaceDoc.cs" />
     <Compile Include="SetKey\SetValueInsertForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +131,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedisSettings.cs" />
+    <Compile Include="ContactControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ContactControl.Designer.cs">
+      <DependentUpon>ContactControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="StartControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -213,6 +220,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ContactControl.resx">
+      <DependentUpon>ContactControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StartControl.resx">
       <DependentUpon>StartControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -348,6 +358,8 @@
     <None Include="Image\zset.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Image\alipay.png" />
+    <None Include="Image\weipay.png" />
     <Content Include="redis.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

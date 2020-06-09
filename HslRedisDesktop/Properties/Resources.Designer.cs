@@ -103,6 +103,16 @@ namespace HslRedisDesktop.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap alipay {
+            get {
+                object obj = ResourceManager.GetObject("alipay", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap brackets_Square_16xMD {
             get {
                 object obj = ResourceManager.GetObject("brackets_Square_16xMD", resourceCulture);
@@ -406,6 +416,16 @@ namespace HslRedisDesktop.Properties {
         internal static System.Drawing.Bitmap VirtualMachine {
             get {
                 object obj = ResourceManager.GetObject("VirtualMachine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap weipay {
+            get {
+                object obj = ResourceManager.GetObject("weipay", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

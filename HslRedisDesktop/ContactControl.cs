@@ -10,21 +10,22 @@ using System.Windows.Forms;
 
 namespace HslRedisDesktop
 {
-    public partial class StartControl : UserControl
+    public partial class ContactControl : UserControl
     {
-        public StartControl( )
+        public ContactControl( )
         {
             InitializeComponent( );
         }
 
         private void panel1_Paint( object sender, PaintEventArgs e )
         {
-            e.Graphics.DrawLine( Pens.LightGray, new Point( 0, 78 ), new Point( panel1.Width, 78 ) );
+            e.Graphics.DrawLine( Pens.LightGray, new Point( 0, 35 ), new Point( panel1.Width, 35 ) );
+            e.Graphics.DrawLine( Pens.LightGray, new Point( 100, 75 ), new Point( panel1.Width - 100, 75 ) );
+            e.Graphics.DrawLine( Pens.LightGray, new Point( 100, 110 ), new Point( panel1.Width - 100, 110 ) );
         }
 
         private void StartControl_Load( object sender, EventArgs e )
         {
-            label2.Text = "Version: " + Utils.Version.ToString( );
             StartControl_SizeChanged( null, null );
         }
 
