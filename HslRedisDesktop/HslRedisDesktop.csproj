@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConsoleControl.Designer.cs">
+      <DependentUpon>ConsoleControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormInputString.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     <Compile Include="ZSetKey\ZSetValueControl.Designer.cs">
       <DependentUpon>ZSetValueControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ConsoleControl.resx">
+      <DependentUpon>ConsoleControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormInputString.resx">
       <DependentUpon>FormInputString.cs</DependentUpon>
     </EmbeddedResource>

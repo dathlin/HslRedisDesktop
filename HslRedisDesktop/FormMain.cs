@@ -150,7 +150,18 @@ namespace HslRedisDesktop
 
 		private void 控制台操作ToolStripMenuItem_Click( object sender, EventArgs e )
 		{
-			MessageBox.Show( "暂时没有实现！" );
+			TreeNode select = treeView1.SelectedNode;
+			if (select == null) return;
+			if (select.ImageKey != "VirtualMachine") return;
+
+			if (select.Tag is RedisSettings settings)
+			{
+				CreateRedisShowTagControl<ConsoleControl>( );
+				if (userControl is ConsoleControl console)
+				{
+					console.SetRedis( settings );
+				}
+			}
 		}
 
 		private void 修改连接配置ToolStripMenuItem_Click( object sender, EventArgs e )
@@ -417,6 +428,7 @@ namespace HslRedisDesktop
 						select.Nodes.Add( dbTree );
 					}
 
+					if(redisSettings.Redis.SelectDB( 0 ).IsSuccess) redisSettings.DBBlock = 0;
 					select.Expand( );
 				}
 			}
