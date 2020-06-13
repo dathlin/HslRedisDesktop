@@ -38,6 +38,7 @@
 			this.button2 = new System.Windows.Forms.Button();
 			this.textBox4 = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -53,14 +54,14 @@
 			// 
 			this.textBox1.Location = new System.Drawing.Point(122, 51);
 			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(243, 23);
+			this.textBox1.Size = new System.Drawing.Size(246, 23);
 			this.textBox1.TabIndex = 1;
 			// 
 			// textBox2
 			// 
 			this.textBox2.Location = new System.Drawing.Point(122, 86);
 			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(243, 23);
+			this.textBox2.Size = new System.Drawing.Size(246, 23);
 			this.textBox2.TabIndex = 3;
 			this.textBox2.Text = "6379";
 			// 
@@ -78,7 +79,7 @@
 			this.textBox3.Location = new System.Drawing.Point(122, 121);
 			this.textBox3.Name = "textBox3";
 			this.textBox3.PasswordChar = '*';
-			this.textBox3.Size = new System.Drawing.Size(243, 23);
+			this.textBox3.Size = new System.Drawing.Size(182, 23);
 			this.textBox3.TabIndex = 5;
 			// 
 			// label3
@@ -114,7 +115,7 @@
 			// 
 			this.textBox4.Location = new System.Drawing.Point(122, 15);
 			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(243, 23);
+			this.textBox4.Size = new System.Drawing.Size(246, 23);
 			this.textBox4.TabIndex = 9;
 			// 
 			// label4
@@ -126,11 +127,22 @@
 			this.label4.TabIndex = 8;
 			this.label4.Text = "Name:";
 			// 
+			// checkBox1
+			// 
+			this.checkBox1.AutoSize = true;
+			this.checkBox1.Location = new System.Drawing.Point(310, 123);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(58, 21);
+			this.checkBox1.TabIndex = 10;
+			this.checkBox1.Text = "Show";
+			this.checkBox1.UseVisualStyleBackColor = true;
+			// 
 			// FormRedisAdd
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(398, 211);
+			this.Controls.Add(this.checkBox1);
 			this.Controls.Add(this.textBox4);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.button2);
@@ -168,5 +180,6 @@
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.TextBox textBox4;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.CheckBox checkBox1;
 	}
 }

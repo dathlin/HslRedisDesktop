@@ -65,6 +65,7 @@ namespace HslRedisDesktop
 			服务器状态ToolStripMenuItem.Click += 服务器状态ToolStripMenuItem_Click;
 			控制台操作ToolStripMenuItem.Click += 控制台操作ToolStripMenuItem_Click;
 			修改连接配置ToolStripMenuItem.Click += 修改连接配置ToolStripMenuItem_Click;
+			修改密码ToolStripMenuItem.Click += 修改密码ToolStripMenuItem_Click;
 			断开当前连接ToolStripMenuItem.Click += 断开当前连接ToolStripMenuItem_Click;
 			删除当前链接ToolStripMenuItem.Click += 删除当前链接ToolStripMenuItem_Click;
 			// 分类器右键
@@ -166,36 +167,73 @@ namespace HslRedisDesktop
 
 		private void 修改连接配置ToolStripMenuItem_Click( object sender, EventArgs e )
 		{
-			MessageBox.Show( "暂时没有实现！" );
-			return;
 			TreeNode select = treeView1.SelectedNode;
 			if (select == null) return;
 			if (select.ImageKey != "VirtualMachine") return;
 
-			if(select.Tag is RedisSettings settings)
+			if (select.Tag is RedisSettings settings)
 			{
 				using (FormRedisAdd form = new FormRedisAdd( settings ))
 				{
-					while (true)
+					if (form.ShowDialog( ) == DialogResult.OK)
 					{
-						if (form.ShowDialog( ) == DialogResult.OK)
+						if (settings.Redis != null)
 						{
-							if (redisSettings.Find( m => m.Name == form.Settings.Name ) == null)
-							{
-								break;
-							}
-							else
-							{
-								MessageBox.Show( "当前输入的服务器别名已经存在，请重新输入！" );
-							}
+							settings.Redis.ConnectClose( );
+							settings.Redis = null;
 						}
-						else
-						{
-							return;
-						}
+						SaveRedisSettings( );
+						if (MessageBox.Show( "当前的连接配置已经更新，是否重新刷新数据？", "刷新确认", MessageBoxButtons.YesNo ) == DialogResult.OK) RefreshRedisKey( select, true );
+					}
+				}
+			}
+		}
+
+		private void 修改密码ToolStripMenuItem_Click( object sender, EventArgs e )
+		{
+			TreeNode select = treeView1.SelectedNode;
+			if (select == null) return;
+			if (select.ImageKey != "VirtualMachine") return;
+
+			if (select.Tag is RedisSettings redisSettings)
+			{
+				if (redisSettings.Redis == null)
+				{
+					redisSettings.Redis = redisSettings.GetClient( );
+					OperateResult connect = redisSettings.Redis.ConnectServer( );
+					if (!connect.IsSuccess) { MessageBox.Show( $"连接Redis[{redisSettings.Name}] IpAddress:{redisSettings.IpAddress} 失败！" ); return; }
+				}
+
+				FormInputString form = new FormInputString( );
+				form.TextInfo = "请输入新的密码：";
+				if(form.ShowDialog() == DialogResult.OK)
+				{
+					OperateResult change;
+					if (string.IsNullOrEmpty( form.InputValue ))
+					{
+						change = redisSettings.Redis.ReadCustomer( "CONFIG SET requirepass " );
+					}
+					else
+					{
+						change = redisSettings.Redis.ReadCustomer( "CONFIG SET requirepass " + form.InputValue );
 					}
 
-					//LoadRedisSettings( );
+					if (change.IsSuccess)
+					{
+						MessageBox.Show( "修改密码成功！" );
+						redisSettings.Password = form.InputValue;
+						if (redisSettings.Redis != null)
+						{
+							redisSettings.Redis.ConnectClose( );
+							redisSettings.Redis = null;
+						}
+						SaveRedisSettings( );
+						RefreshRedisKey( select, true );
+					}
+					else
+					{
+						MessageBox.Show( "修改密码失败！" + change.Message );
+					}
 				}
 			}
 		}
@@ -208,7 +246,8 @@ namespace HslRedisDesktop
 
 			if (select.Tag is RedisSettings settings)
 			{
-				settings?.Redis?.ConnectClose( );
+				settings.Redis?.ConnectClose( );
+				settings.Redis = null;
 				select.Nodes.Clear( );
 			}
 		}
@@ -329,6 +368,7 @@ namespace HslRedisDesktop
 				TreeNode select = treeView1.SelectedNode;
 				if (select == null) return;
 
+
 				if (select.ImageKey == "redis_db")
 				{
 					contextMenuStrip_db.Show( treeView1, e.Location );
@@ -414,15 +454,23 @@ namespace HslRedisDesktop
 				{
 					redisSettings.Redis = redisSettings.GetClient( );
 					OperateResult connect = redisSettings.Redis.ConnectServer( );
-					if (!connect.IsSuccess) { MessageBox.Show( $"连接Redis[{redisSettings.Name}] IpAddress:{redisSettings.IpAddress} 失败！" ); return; }
+					if (!connect.IsSuccess) { MessageBox.Show( $"连接Redis[{redisSettings.Name}] IpAddress:{redisSettings.IpAddress} 失败\r\n" + connect.Message ); return; }
 				}
 
 				if (select.Nodes.Count == 0 || reload)
 				{
 					for (int i = 0; i < 16; i++)
 					{
-						OperateResult selectDb = redisSettings.Redis.SelectDB( i );
-						if (!selectDb.IsSuccess) break;
+						if(i == 0)
+						{
+							OperateResult selectDb = redisSettings.Redis.SelectDB( i );
+							if (!selectDb.IsSuccess) { MessageBox.Show( "Redis读取失败！" + selectDb.Message ); return; };
+						}
+						else
+						{
+							OperateResult selectDb = redisSettings.Redis.SelectDB( i );
+							if (!selectDb.IsSuccess) break;
+						}
 
 						redisSettings.DBBlock = i;
 

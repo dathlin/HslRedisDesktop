@@ -52,8 +52,9 @@
 			this.控制台操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.刷新所有数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.修改连接配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.删除当前链接ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.断开当前连接ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.删除当前链接ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.展开所有ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -176,10 +177,11 @@
             this.控制台操作ToolStripMenuItem,
             this.刷新所有数据ToolStripMenuItem,
             this.修改连接配置ToolStripMenuItem,
+            this.修改密码ToolStripMenuItem,
             this.断开当前连接ToolStripMenuItem,
             this.删除当前链接ToolStripMenuItem});
 			this.contextMenuStrip_redis.Name = "contextMenuStrip_redis";
-			this.contextMenuStrip_redis.Size = new System.Drawing.Size(181, 158);
+			this.contextMenuStrip_redis.Size = new System.Drawing.Size(181, 180);
 			// 
 			// contextMenuStrip_class
 			// 
@@ -262,6 +264,13 @@
 			this.修改连接配置ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.修改连接配置ToolStripMenuItem.Text = "修改连接配置";
 			// 
+			// 断开当前连接ToolStripMenuItem
+			// 
+			this.断开当前连接ToolStripMenuItem.Image = global::HslRedisDesktop.Properties.Resources.disconnect;
+			this.断开当前连接ToolStripMenuItem.Name = "断开当前连接ToolStripMenuItem";
+			this.断开当前连接ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.断开当前连接ToolStripMenuItem.Text = "断开当前连接";
+			// 
 			// 删除当前链接ToolStripMenuItem
 			// 
 			this.删除当前链接ToolStripMenuItem.Image = global::HslRedisDesktop.Properties.Resources.action_Cancel_16xLG1;
@@ -270,12 +279,12 @@
 			this.删除当前链接ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.删除当前链接ToolStripMenuItem.Text = "删除当前链接";
 			// 
-			// 断开当前连接ToolStripMenuItem
+			// 修改密码ToolStripMenuItem
 			// 
-			this.断开当前连接ToolStripMenuItem.Image = global::HslRedisDesktop.Properties.Resources.disconnect;
-			this.断开当前连接ToolStripMenuItem.Name = "断开当前连接ToolStripMenuItem";
-			this.断开当前连接ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.断开当前连接ToolStripMenuItem.Text = "断开当前连接";
+			this.修改密码ToolStripMenuItem.Image = global::HslRedisDesktop.Properties.Resources.password;
+			this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
+			this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.修改密码ToolStripMenuItem.Text = "修改密码";
 			// 
 			// 展开所有ToolStripMenuItem
 			// 
@@ -343,6 +352,7 @@
 		private System.Windows.Forms.ToolStripMenuItem sourceCodeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contactToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 断开当前连接ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 修改密码ToolStripMenuItem;
 	}
 }
 

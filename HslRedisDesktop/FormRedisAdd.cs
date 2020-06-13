@@ -24,6 +24,8 @@ namespace HslRedisDesktop
 				Port = 6379,
 				Password = string.Empty
 			};
+
+			textBox4.ReadOnly = true;
 		}
 
 		private void FormRedisAdd_Load( object sender, EventArgs e )
@@ -35,7 +37,19 @@ namespace HslRedisDesktop
 			textBox2.Text = this.settings.Port.ToString( );
 			textBox3.Text = this.settings.Password;
 
+			checkBox1.CheckedChanged += CheckBox1_CheckedChanged;
+		}
 
+		private void CheckBox1_CheckedChanged( object sender, EventArgs e )
+		{
+			if (checkBox1.Checked)
+			{
+				textBox3.PasswordChar = (char)0;
+			}
+			else
+			{
+				textBox3.PasswordChar = '*';
+			}
 		}
 
 		private RedisSettings settings = null;
@@ -86,13 +100,10 @@ namespace HslRedisDesktop
 				return;
 			}
 
-			settings = new RedisSettings( )
-			{
-				Name = textBox4.Text,
-				IpAddress = textBox1.Text,
-				Port = int.Parse( textBox2.Text ),
-				Password = textBox3.Text
-			};
+			settings.Name = textBox4.Text;
+			settings.IpAddress = textBox1.Text;
+			settings.Port = int.Parse( textBox2.Text );
+			settings.Password = textBox3.Text;
 
 			DialogResult = DialogResult.OK;
 		}

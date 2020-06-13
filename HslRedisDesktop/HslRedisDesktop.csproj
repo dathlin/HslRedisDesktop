@@ -370,6 +370,7 @@
     <None Include="Image\alipay.png" />
     <None Include="Image\weipay.png" />
     <None Include="Image\disconnect.png" />
+    <None Include="Image\password.png" />
     <Content Include="redis.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
