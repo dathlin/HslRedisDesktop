@@ -65,6 +65,7 @@ namespace HslRedisDesktop
 			服务器状态ToolStripMenuItem.Click += 服务器状态ToolStripMenuItem_Click;
 			控制台操作ToolStripMenuItem.Click += 控制台操作ToolStripMenuItem_Click;
 			修改连接配置ToolStripMenuItem.Click += 修改连接配置ToolStripMenuItem_Click;
+			断开当前连接ToolStripMenuItem.Click += 断开当前连接ToolStripMenuItem_Click;
 			删除当前链接ToolStripMenuItem.Click += 删除当前链接ToolStripMenuItem_Click;
 			// 分类器右键
 			展开所有ToolStripMenuItem.Click += 展开所有ToolStripMenuItem_Click;
@@ -78,7 +79,6 @@ namespace HslRedisDesktop
 			sourceCodeToolStripMenuItem.Click += SourceCodeToolStripMenuItem_Click;
             contactToolStripMenuItem.Click += ContactToolStripMenuItem_Click;
 		}
-
 
 		private void FormMain_Shown( object sender, EventArgs e )
 		{
@@ -197,6 +197,19 @@ namespace HslRedisDesktop
 
 					//LoadRedisSettings( );
 				}
+			}
+		}
+
+		private void 断开当前连接ToolStripMenuItem_Click( object sender, EventArgs e )
+		{
+			TreeNode select = treeView1.SelectedNode;
+			if (select == null) return;
+			if (select.ImageKey != "VirtualMachine") return;
+
+			if (select.Tag is RedisSettings settings)
+			{
+				settings?.Redis?.ConnectClose( );
+				select.Nodes.Clear( );
 			}
 		}
 
