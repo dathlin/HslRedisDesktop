@@ -21,7 +21,7 @@ namespace HslRedisDesktop
 			InitializeComponent( );
 		}
 
-		public void SetValue(string value )
+		public void SetValue( string value )
 		{
 			this.value = value;
 			ShowValue( );
@@ -53,7 +53,7 @@ namespace HslRedisDesktop
 			}
 		}
 
-		
+
 
 		private void ValueControl_Load( object sender, EventArgs e )
 		{
@@ -75,6 +75,59 @@ namespace HslRedisDesktop
 
 		private string value = string.Empty;
 
-    }
+
+		#region Search
+
+		int lastSeachIndex = -1;
+		string searchCondition = string.Empty;
+		private void linkLabel1_LinkClicked( object sender, LinkLabelLinkClickedEventArgs e )
+		{
+			// 搜索数据信息
+			if (string.IsNullOrEmpty( textBox1.Text ) || string.IsNullOrEmpty( textBox2.Text ))
+			{
+				MessageBox.Show( "输入的字符串为空，无法进行查找。" );
+				return;
+			};
+
+			if(string.IsNullOrEmpty( searchCondition ))
+			{
+				searchCondition = textBox2.Text;
+			}
+			else
+			{
+				if (searchCondition != textBox2.Text)
+				{
+					lastSeachIndex = -1;
+					searchCondition = textBox2.Text;
+				}
+			}
+			int index = textBox1.Text.IndexOf( textBox2.Text, lastSeachIndex == -1 ? 0 : lastSeachIndex );
+			if (index == -1)
+			{
+				MessageBox.Show( "没有找到相关的数据信息。" );
+				lastSeachIndex = -1;
+				return;
+			}
+
+			lastSeachIndex = index + 1;
+
+			textBox1.SelectionStart = index;
+			textBox1.SelectionLength = textBox2.Text.Length;
+			textBox1.ScrollToCaret( );
+			textBox1.Focus( );
+		}
+
+		private void textBox2_KeyDown( object sender, KeyEventArgs e )
+		{
+			if(e.KeyCode == Keys.Enter)
+			{
+				linkLabel1_LinkClicked( null, null );
+
+			}
+		}
+
+		#endregion
+
+	}
 
 }
