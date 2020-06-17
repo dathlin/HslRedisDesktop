@@ -25,7 +25,7 @@ namespace HslRedisDesktop
 				Password = string.Empty
 			};
 
-			textBox4.ReadOnly = true;
+			if (redisSettings != null) textBox4.ReadOnly = true;
 		}
 
 		private void FormRedisAdd_Load( object sender, EventArgs e )
