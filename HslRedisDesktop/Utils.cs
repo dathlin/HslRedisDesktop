@@ -10,7 +10,7 @@ namespace HslRedisDesktop
 {
     public class Utils
     {
-        public static SystemVersion Version { get; set; } = new SystemVersion( "1.0.0" );
+        public static SystemVersion Version { get; set; } = new SystemVersion( "1.1.0" );
 
         public static void ControlDataGridViewRow( DataGridView dataGridView, int row )
         {
