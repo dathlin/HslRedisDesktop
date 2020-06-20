@@ -79,6 +79,30 @@ namespace HslRedisDesktop
 			aboutToolStripMenuItem.Click += AboutToolStripMenuItem_Click;
 			sourceCodeToolStripMenuItem.Click += SourceCodeToolStripMenuItem_Click;
             contactToolStripMenuItem.Click += ContactToolStripMenuItem_Click;
+			activateToolStripMenuItem.Click += ActivateToolStripMenuItem_Click;
+
+			try
+			{
+				if(File.Exists( Path.Combine( Application.StartupPath, "code.txt" ) ))
+				{
+					string content = File.ReadAllText( Path.Combine( Application.StartupPath, "code.txt" ), Encoding.UTF8 );
+					string code = SoftSecurity.MD5Decrypt( content, "1234asdf" );
+
+					if (HslCommunication.Authorization.SetAuthorizationCode( code ))
+					{
+						activateToolStripMenuItem.Text = "Activated";
+						activateToolStripMenuItem.ForeColor = Color.White;
+					}
+					else
+					{
+						//MessageBox.Show( "Wrong Code" );
+					}
+				}
+			}
+			catch
+			{
+
+			}
 		}
 
 		private void FormMain_Shown( object sender, EventArgs e )
@@ -129,6 +153,28 @@ namespace HslRedisDesktop
 		private void AboutToolStripMenuItem_Click( object sender, EventArgs e )
 		{
 			CreateRedisShowTagControl<StartControl>( );
+		}
+
+		private void ActivateToolStripMenuItem_Click( object sender, EventArgs e )
+		{
+
+			FormInputString form = new FormInputString( );
+			form.TextInfo = "请输入激活码：";
+			if (form.ShowDialog( ) == DialogResult.OK)
+			{
+				if (HslCommunication.Authorization.SetAuthorizationCode( form.InputValue ))
+				{
+					File.WriteAllText( Path.Combine( Application.StartupPath, "code.txt" ),
+						HslCommunication.BasicFramework.SoftSecurity.MD5Encrypt( form.InputValue, "1234asdf" ), Encoding.UTF8 );
+
+					activateToolStripMenuItem.Text = "Activated";
+					activateToolStripMenuItem.ForeColor = Color.White;
+				}
+				else
+				{
+					MessageBox.Show( "Wrong Code" );
+				}
+			}
 		}
 
 		#endregion

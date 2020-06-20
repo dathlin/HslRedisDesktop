@@ -37,25 +37,26 @@
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.button1 = new System.Windows.Forms.Button();
 			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.contextMenuStrip_db = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.contextMenuStrip_redis = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.contextMenuStrip_class = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.button1 = new System.Windows.Forms.Button();
 			this.新增KeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.刷新数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.过滤KeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.清除所有KeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.contextMenuStrip_redis = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.服务器状态ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.控制台操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.刷新所有数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.修改连接配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.断开当前连接ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.删除当前链接ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.contextMenuStrip_class = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.展开所有ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.activateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -73,7 +74,8 @@
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem,
             this.sourceCodeToolStripMenuItem,
-            this.contactToolStripMenuItem});
+            this.contactToolStripMenuItem,
+            this.activateToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(1143, 25);
@@ -133,6 +135,17 @@
 			this.splitContainer1.SplitterDistance = 330;
 			this.splitContainer1.TabIndex = 3;
 			// 
+			// button1
+			// 
+			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.button1.Image = global::HslRedisDesktop.Properties.Resources.action_add_16xLG;
+			this.button1.Location = new System.Drawing.Point(296, 5);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(32, 23);
+			this.button1.TabIndex = 2;
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
 			// treeView1
 			// 
 			this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -170,37 +183,6 @@
 			this.contextMenuStrip_db.Name = "contextMenuStrip1";
 			this.contextMenuStrip_db.Size = new System.Drawing.Size(146, 92);
 			// 
-			// contextMenuStrip_redis
-			// 
-			this.contextMenuStrip_redis.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.服务器状态ToolStripMenuItem,
-            this.控制台操作ToolStripMenuItem,
-            this.刷新所有数据ToolStripMenuItem,
-            this.修改连接配置ToolStripMenuItem,
-            this.修改密码ToolStripMenuItem,
-            this.断开当前连接ToolStripMenuItem,
-            this.删除当前链接ToolStripMenuItem});
-			this.contextMenuStrip_redis.Name = "contextMenuStrip_redis";
-			this.contextMenuStrip_redis.Size = new System.Drawing.Size(181, 180);
-			// 
-			// contextMenuStrip_class
-			// 
-			this.contextMenuStrip_class.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.展开所有ToolStripMenuItem});
-			this.contextMenuStrip_class.Name = "contextMenuStrip_class";
-			this.contextMenuStrip_class.Size = new System.Drawing.Size(125, 26);
-			// 
-			// button1
-			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button1.Image = global::HslRedisDesktop.Properties.Resources.action_add_16xLG;
-			this.button1.Location = new System.Drawing.Point(296, 5);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(32, 23);
-			this.button1.TabIndex = 2;
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
 			// 新增KeyToolStripMenuItem
 			// 
 			this.新增KeyToolStripMenuItem.Image = global::HslRedisDesktop.Properties.Resources.action_add_16xLG;
@@ -233,12 +215,25 @@
 			this.清除所有KeyToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
 			this.清除所有KeyToolStripMenuItem.Text = "清除所有Key";
 			// 
+			// contextMenuStrip_redis
+			// 
+			this.contextMenuStrip_redis.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.服务器状态ToolStripMenuItem,
+            this.控制台操作ToolStripMenuItem,
+            this.刷新所有数据ToolStripMenuItem,
+            this.修改连接配置ToolStripMenuItem,
+            this.修改密码ToolStripMenuItem,
+            this.断开当前连接ToolStripMenuItem,
+            this.删除当前链接ToolStripMenuItem});
+			this.contextMenuStrip_redis.Name = "contextMenuStrip_redis";
+			this.contextMenuStrip_redis.Size = new System.Drawing.Size(149, 158);
+			// 
 			// 服务器状态ToolStripMenuItem
 			// 
 			this.服务器状态ToolStripMenuItem.Image = global::HslRedisDesktop.Properties.Resources.server_info;
 			this.服务器状态ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
 			this.服务器状态ToolStripMenuItem.Name = "服务器状态ToolStripMenuItem";
-			this.服务器状态ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.服务器状态ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
 			this.服务器状态ToolStripMenuItem.Text = "服务器状态";
 			// 
 			// 控制台操作ToolStripMenuItem
@@ -246,14 +241,14 @@
 			this.控制台操作ToolStripMenuItem.Image = global::HslRedisDesktop.Properties.Resources.console;
 			this.控制台操作ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
 			this.控制台操作ToolStripMenuItem.Name = "控制台操作ToolStripMenuItem";
-			this.控制台操作ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.控制台操作ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
 			this.控制台操作ToolStripMenuItem.Text = "控制台操作";
 			// 
 			// 刷新所有数据ToolStripMenuItem
 			// 
 			this.刷新所有数据ToolStripMenuItem.Image = global::HslRedisDesktop.Properties.Resources.Activity_16xLG;
 			this.刷新所有数据ToolStripMenuItem.Name = "刷新所有数据ToolStripMenuItem";
-			this.刷新所有数据ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.刷新所有数据ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
 			this.刷新所有数据ToolStripMenuItem.Text = "刷新所有数据";
 			// 
 			// 修改连接配置ToolStripMenuItem
@@ -261,14 +256,21 @@
 			this.修改连接配置ToolStripMenuItem.Image = global::HslRedisDesktop.Properties.Resources.settings;
 			this.修改连接配置ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
 			this.修改连接配置ToolStripMenuItem.Name = "修改连接配置ToolStripMenuItem";
-			this.修改连接配置ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.修改连接配置ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
 			this.修改连接配置ToolStripMenuItem.Text = "修改连接配置";
+			// 
+			// 修改密码ToolStripMenuItem
+			// 
+			this.修改密码ToolStripMenuItem.Image = global::HslRedisDesktop.Properties.Resources.password;
+			this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
+			this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.修改密码ToolStripMenuItem.Text = "修改密码";
 			// 
 			// 断开当前连接ToolStripMenuItem
 			// 
 			this.断开当前连接ToolStripMenuItem.Image = global::HslRedisDesktop.Properties.Resources.disconnect;
 			this.断开当前连接ToolStripMenuItem.Name = "断开当前连接ToolStripMenuItem";
-			this.断开当前连接ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.断开当前连接ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
 			this.断开当前连接ToolStripMenuItem.Text = "断开当前连接";
 			// 
 			// 删除当前链接ToolStripMenuItem
@@ -276,15 +278,15 @@
 			this.删除当前链接ToolStripMenuItem.Image = global::HslRedisDesktop.Properties.Resources.action_Cancel_16xLG1;
 			this.删除当前链接ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
 			this.删除当前链接ToolStripMenuItem.Name = "删除当前链接ToolStripMenuItem";
-			this.删除当前链接ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.删除当前链接ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
 			this.删除当前链接ToolStripMenuItem.Text = "删除当前链接";
 			// 
-			// 修改密码ToolStripMenuItem
+			// contextMenuStrip_class
 			// 
-			this.修改密码ToolStripMenuItem.Image = global::HslRedisDesktop.Properties.Resources.password;
-			this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
-			this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.修改密码ToolStripMenuItem.Text = "修改密码";
+			this.contextMenuStrip_class.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.展开所有ToolStripMenuItem});
+			this.contextMenuStrip_class.Name = "contextMenuStrip_class";
+			this.contextMenuStrip_class.Size = new System.Drawing.Size(125, 26);
 			// 
 			// 展开所有ToolStripMenuItem
 			// 
@@ -292,6 +294,12 @@
 			this.展开所有ToolStripMenuItem.Name = "展开所有ToolStripMenuItem";
 			this.展开所有ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
 			this.展开所有ToolStripMenuItem.Text = "展开所有";
+			// 
+			// activateToolStripMenuItem
+			// 
+			this.activateToolStripMenuItem.Name = "activateToolStripMenuItem";
+			this.activateToolStripMenuItem.Size = new System.Drawing.Size(65, 21);
+			this.activateToolStripMenuItem.Text = "Activate";
 			// 
 			// FormMain
 			// 
@@ -353,6 +361,7 @@
         private System.Windows.Forms.ToolStripMenuItem contactToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 断开当前连接ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 修改密码ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem activateToolStripMenuItem;
 	}
 }
 
